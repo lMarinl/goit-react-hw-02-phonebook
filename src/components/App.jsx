@@ -21,7 +21,6 @@ export class App extends Component {
   };
 
   handlerAddContact = formData => {
-    const newContact = { ...formData, id: nanoid() };
     const hasDuplicates = this.state.contacts.some(
       contact => contact.name === formData.name
     );
@@ -31,7 +30,7 @@ export class App extends Component {
       );
       return;
     }
-
+    const newContact = { ...formData, id: nanoid() };
     this.setState(prevState => {
       return {
         contacts: [...prevState.contacts, newContact],
